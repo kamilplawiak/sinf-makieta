@@ -8,13 +8,19 @@ import { MenuService } from '../menu.service';
   styleUrls: ['./left-menu.component.scss']
 })
 export class LeftMenuComponent {
-  activeElement = 'home';
+  activeElement = '';
+  activeLink = '';
 
-  constructor(public menuService: MenuService,
-              private router: Router) {}
+  constructor(public menuService: MenuService) {}
 
   onMenuLinkClick(name: string) {
+    if(this.activeElement !== name) this.activeLink = '';
     this.activeElement = name;
+  }
+
+  onLinkClick(name: string, event: Event) {
+    event.stopPropagation();
+    this.activeLink = name;
   }
 
   dashedNotation(str: string) : string {

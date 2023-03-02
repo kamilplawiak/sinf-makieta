@@ -1,24 +1,29 @@
 <div class="wrapper">
     <div class="link-list-wrapper h-100">
         <ul class="h-100">
-            <a (click)="onMenuLinkClick('home')">
+            <a (click)="onMenuLinkClick('home')" routerLink="/">
                 <li class="w-100 d-flex justify-content-start align-items-center"
                     [ngClass]="{ 'active': activeElement === 'home' }">
-                    <img src="../../assets/left-menu/home-icon.png" alt="Home" class="ms-2 me-3">
-                    <a routerLink="/"><span class="menu-link">Strona główna</span></a>
+                    <img src="../../assets/left-menu/home-icon.svg" alt="Home" class="ms-2 me-3">
+                    <a><span class="menu-link">Strona główna</span></a>
                 </li>
             </a>
 
             <a (click)="onMenuLinkClick('simple')">
                 <li class="w-100 d-flex justify-content-start align-items-center flex-wrap search"
                     [ngClass]="{ 'active': activeElement === 'simple' }">
-                    <img src="../../assets/left-menu/search-icon.png" alt="Search" class="ms-2 me-3">
+                    <img src="../../assets/left-menu/search-icon.svg" alt="Search" class="ms-2 me-3">
                     <span class="menu-link">Wyszukiwanie proste</span>
 
                     <ul *ngIf="activeElement === 'simple'" class="d-flex flex-column">
                         <li *ngFor="let item of menuService.getSimpleItems()">
-                            <a [routerLink]="'search/simple/' + dashedNotation(item.title)">
-                                <p class="menu-link m-0 ms-5 my-2">{{ item.title }}</p>
+                            <a
+                                [routerLink]="'search/simple/' + dashedNotation(item.title)"
+                                (click)="onLinkClick(dashedNotation(item.title), $event)"
+                                [ngClass]="{ 'active': activeLink === dashedNotation(item.title) }">
+                                <p class="menu-link m-0 ps-5">
+                                    {{ item.title }}
+                                </p>
                             </a>
                         </li>
                     </ul>
@@ -28,13 +33,16 @@
             <a (click)="onMenuLinkClick('complex')">
                 <li class="w-100 d-flex justify-content-start align-items-center flex-wrap search"
                     [ngClass]="{ 'active': activeElement === 'complex' }">
-                    <img src="../../assets/left-menu/search-icon.png" alt="Search" class="ms-2 me-3">
+                    <img src="../../assets/left-menu/search-icon.svg" alt="Search" class="ms-2 me-3">
                     <span class="menu-link">Wyszukiwanie złożone</span>
 
                     <ul *ngIf="activeElement === 'complex'" class="d-flex flex-column">
                         <li *ngFor="let item of menuService.getComplexItems()">
-                            <a [routerLink]="'search/complex/' + dashedNotation(item.title)">
-                                <p class="menu-link m-0 ms-5 my-2">{{ item.title }}</p>
+                            <a
+                                [routerLink]="'search/complex/' + dashedNotation(item.title)"
+                                (click)="onLinkClick(dashedNotation(item.title), $event)"
+                                [ngClass]="{ 'active': activeLink === dashedNotation(item.title) }">
+                                <p class="menu-link m-0 ps-5">{{ item.title }}</p>
                             </a>
                         </li>
                     </ul>

@@ -28,6 +28,7 @@
     $left: null,
 ) {
     content: $content;
+    display: inline-block;
     position: absolute;
     @if $top {
         top: calc(0% + $top);
