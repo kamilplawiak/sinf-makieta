@@ -1,0 +1,94 @@
+@import '../../variables';
+@import '../../common';
+
+.wrapper {
+    position: sticky;
+    left: 0;
+    height: 100%;
+    box-shadow: 2px 0 5px -2px #BABABA;
+
+    .link-list-wrapper {
+        ul {
+            list-style-type: none;
+            padding: 0;
+
+            a > li {
+                min-height: 30px;
+                line-height: 30px;
+                height: calc((56 / 1080) * 100%);
+                border-right: 1px solid rgba($light-border-color, 0.5);
+                border-bottom: 1px solid rgba($light-border-color, 0.5);
+                // border-left: 4px solid transparent;
+                position: relative;
+
+                span {
+                    min-height: 30px;
+                    line-height: 30px;
+                }
+
+                ul {
+                    transition: all 0.5s ease-in-out;
+                    height: 0;
+                    // display: none !important;
+                }
+
+                &.active {
+                    height: fit-content;
+                    background-color: #F6F7FA;
+
+                    ul {
+                        margin: 0;
+                        padding: 0;
+                        height: 100%;
+                        width: 100%;
+                        transition: all 0.5s ease-in-out;
+                        border-left: 4px solid #0052A5 !important;
+
+                        li {
+                            border-bottom: 1px solid rgba($light-border-color, 0.5);
+                        }
+                    }
+
+                    span.menu-link {
+                        font-weight: 500;
+                        color: #0052A5;
+                    }
+                }
+
+                &.search::after {
+                    @include icon-indicator($content: url('assets/header/down-arrow-icon.png'), $right: 0.8rem)
+                }
+
+                &.search.active::after {
+                    @include icon-indicator($content: url('assets/header/down-arrow-icon.png'), $right: 0.8rem, $top: 0rem)
+                }
+
+                span {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .wrapper > .link-list-wrapper > ul > a > li > span, .menu-link {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .menu-link {
+        width: 50%;
+    }
+}
+
+
+// @media only screen and (max-width: 767px) {
+//     .wrapper {
+//         width: 100%;
+//     }
+// }
+
+
+

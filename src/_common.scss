@@ -1,0 +1,44 @@
+@import 'variables';
+
+@mixin bold-text(
+    $size: 1em,
+    $color: $dark-text-color
+) {
+    font-weight: 700;
+    font-size: $size;
+    color: $color;
+}
+
+@mixin round-button(
+    $border-color: $dark-text-color,
+    $border-radius: 3px,
+    $font-size: 1em
+) {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    font-size: $font-size;
+    line-height: 1.5rem;
+}
+
+@mixin icon-indicator(
+    $content: '',
+    $top: null,
+    $right: 1rem,
+    $bottom: null,
+    $left: null,
+) {
+    content: $content;
+    position: absolute;
+    @if $top {
+        top: calc(0% + $top);
+    }
+    @if $right {
+        right: calc(0% + $right);
+    }
+    @if $bottom {
+        bottom: calc(0% + $bottom);
+    }
+    @if $left {
+        left: calc(0% + $left);
+    }
+}

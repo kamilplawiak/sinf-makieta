@@ -1,0 +1,76 @@
+@import '../../variables';
+@import '../../common';
+
+* {
+    font-family: Montserrat;
+    font-style: normal;
+}
+
+.wrapper {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 999;
+    height: $header-height;
+    min-height: 40px;
+    border-bottom: 1px solid rgba($light-border-color, 0.5);
+
+    .menu-button-wrapper {
+        width: calc((300 / 1920) * 100%);
+
+        a, img {
+            cursor: pointer;
+        }
+
+        a.bold-link {
+            @include bold-text($size: 1rem);
+        }
+    }
+
+    .title-wrapper {
+        font-size: 1.25rem;
+        line-height: 2.625rem;
+
+        .title {
+            @include bold-text;
+        }
+    }
+
+    .user-wrapper {
+        .user-button {
+            font-family: 'Open Sans';
+            background-color: transparent;
+            position: relative;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            @include round-button;
+
+            &::after {
+                @include icon-indicator($content: url('assets/header/down-arrow-icon.png'))
+            }
+        }
+    }
+}
+
+
+.title {
+    margin: 0;
+
+    .red-title-text {
+        color: $red-text-color;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+}
+
+@media only screen and (max-width: 767px) {
+    .menu-button-wrapper > .bold-link {
+        display: none;
+    }
+
+    .title-wrapper > p:not(.title) {
+        display: none !important;
+    }
+}

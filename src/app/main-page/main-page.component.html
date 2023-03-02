@@ -1,0 +1,29 @@
+<div class="wrapper mt-4 ms-4">
+    <h2 class="mb-3">Strona główna</h2>
+    <p class="mb-4">Wybierz odpowiednią wyszukiwarkę, aby znaleźć dane finansowe.</p>
+
+    <div class="simple-search-wrapper">
+        <p class="p-title">Wyszukiwanie proste</p>
+
+        <div class="row w-100">
+            <app-main-page-item
+                *ngFor="let item of menuService.getSimpleItems()"
+                [title]="item.title"
+                [content]="item.content"
+                class="col-12 col-md-4 mb-4">
+            </app-main-page-item>
+        </div>
+    </div>
+
+    <div class="complex-search-wrapper">
+        <p class="p-title mt-3 mb-4">Wyszukiwanie złożone</p>
+        <div class="row w-100">
+            <app-main-page-item
+                *ngFor="let item of menuService.getComplexItems()"
+                [title]="item.title"
+                [content]="item.content"
+                class="col-12 col-md-4 mb-4">
+            </app-main-page-item>
+        </div>
+    </div>
+</div>

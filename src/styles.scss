@@ -1,1 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+
+/* 
+    Custom fonts
+*/
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('assets/fonts/OpenSans-VariableFont_wdth\,wght.ttf');
+}
+
+/* 
+    Reset default styles
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    color: $dark-text-color;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    color: $dark-text-color;
+
+    &:hover {
+        color: $dark-text-color;
+    }
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+html {
+    font-size: 10px;
+}
+
+/* 
+    Responsive
+*/
+
+@media only screen and (min-width: 480px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 11px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    html {
+        font-size: 11px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    html {
+        font-size: 16px;
+    }
+}

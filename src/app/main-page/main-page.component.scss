@@ -1,0 +1,16 @@
+@import '../../common';
+@import '../../variables';
+
+.wrapper {
+    h2 {
+        font-family: 'Montserrat';
+        @include bold-text($size: 2.25rem)
+    }
+
+    .simple-search-wrapper, .complex-search-wrapper {
+        .p-title {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+}

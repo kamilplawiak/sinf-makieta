@@ -1,0 +1,17 @@
+@import '../../common';
+@import '../../variables';
+
+.wrapper {
+    border: 1px solid $light-border-color;
+    position: relative;
+    min-height: 115px;
+    cursor: pointer;
+
+    .title {
+        @include bold-text();
+
+        &::after {
+            @include icon-indicator($content: url('assets/main-page/right-arrow.png'))
+        }
+    }
+}
