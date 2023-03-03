@@ -66,6 +66,36 @@ export class MenuService {
         return result;
     }
 
+    public dashedNotation(str: string) : string {
+        if(str.length === 0) return "";
+        const arr = str.split(" ");
+        arr.forEach((word, index) => arr[index] = word.toLowerCase());
+        return arr.join("-");
+    }
+
+    public getLinkCategory(name: string) : string {
+        let result = '';
+
+        switch(name) {
+            case 'Wyszukiwanie złożone':
+              result = 'complex';
+              break;
+      
+            case 'Wyszukiwanie proste':
+                result = 'simple';
+              break;
+      
+            case 'Wyszukiwarka':
+                result = 'test';
+              break;
+      
+            default:
+              break;
+        };
+
+        return result;
+    }
+
     public getUserItems() {
         return this.#userItems;
     }

@@ -21,7 +21,7 @@ export class LeftMenuComponent implements OnInit {
     this.iconFiles.set('Wyszukiwanie złożone', 'search-icon.svg');
     this.iconFiles.set('Wyszukiwarka', 'search-icon.svg');
 
-    this.menuService.setUsername('Admin');
+    this.menuService.setUsername('Test');
   }
 
   onMenuLinkClick(index: number) {

@@ -34,13 +34,6 @@ export class LeftMenuItemComponent implements AfterContentInit {
     this.activeLink = str;
   }
 
-  dashedNotation(str: string) : string {
-    if(str.length === 0) return "";
-    const arr = str.split(" ");
-    arr.forEach((word, index) => arr[index] = word.toLowerCase());
-    return arr.join("-");
-  }
-
   navigate() {
     if(!this.hasList) this.router.navigate(['']);
   }

@@ -8,6 +8,7 @@
         <div class="row w-100">
             <app-main-page-item
                 *ngFor="let item of menuService.get('Wyszukiwanie proste')"
+                category="simple"
                 [title]="item.title"
                 [content]="item.content"
                 class="col-12 col-md-4 mb-4">
@@ -20,6 +21,7 @@
         <div class="row w-100">
             <app-main-page-item
                 *ngFor="let item of menuService.get('Wyszukiwanie złożone')"
+                category="complex"
                 [title]="item.title"
                 [content]="item.content"
                 class="col-12 col-md-4 mb-4">

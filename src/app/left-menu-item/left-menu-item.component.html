@@ -13,9 +13,9 @@
         <ul *ngIf="hasList && isActive" class="d-flex flex-column">
             <li *ngFor="let item of menuService.get(title)">
                 <a
-                    [routerLink]="'search/' + (isComplex ? 'complex/' : 'simple/') + dashedNotation(item.title)"
-                    (click)="onLinkClick(dashedNotation(item.title), $event)"
-                    [ngClass]="{ 'active': activeLink === dashedNotation(item.title) }">
+                    [routerLink]="'search/' + menuService.getLinkCategory(this.title) + '/' + menuService.dashedNotation(item.title)"
+                    (click)="onLinkClick(menuService.dashedNotation(item.title), $event)"
+                    [ngClass]="{ 'active': activeLink === menuService.dashedNotation(item.title) }">
                     <p class="menu-link m-0 ps-5">
                         {{ item.title }}
                     </p>
