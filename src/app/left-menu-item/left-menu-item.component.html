@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <li class="w-100 d-flex justify-content-start align-items-center flex-wrap search"
+        [ngClass]="{ 'active': isActive, 'noList': !hasList }"
+        (click)="navigate()">
+        <img
+            [src]="'../../assets/left-menu/' + iconFile"
+            [alt]="iconFile.split('.')[0]"
+            class="ms-2 me-3">
+        <a>
+            <span class="menu-link">{{ title }}</span>
+        </a>
+
+        <ul *ngIf="hasList && isActive" class="d-flex flex-column">
+            <li *ngFor="let item of menuService.get(title)">
+                <a
+                    [routerLink]="'search/' + (isComplex ? 'complex/' : 'simple/') + dashedNotation(item.title)"
+                    (click)="onLinkClick(dashedNotation(item.title), $event)"
+                    [ngClass]="{ 'active': activeLink === dashedNotation(item.title) }">
+                    <p class="menu-link m-0 ps-5">
+                        {{ item.title }}
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </li>
+</div>

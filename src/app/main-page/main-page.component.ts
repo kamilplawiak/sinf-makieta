@@ -11,4 +11,8 @@ import { MenuService } from '../menu.service';
 })
 export class MainPageComponent {
   constructor(public menuService: MenuService) {}
+
+  ngOnInit() : void {
+
+  }
 }

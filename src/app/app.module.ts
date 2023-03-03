@@ -12,6 +12,7 @@ import { SimpleSearchAccountNumberComponent } from './simple-search/simple-searc
 import { SimpleSearchCompanyComponent } from './simple-search/simple-search-company/simple-search-company.component';
 import { ComplexSearchCompanyComponent } from './complex-search/complex-search-company/complex-search-company.component';
 import { ComplexSearchPhysicalPersonComponent } from './complex-search/complex-search-physical-person/complex-search-physical-person.component';
+import { LeftMenuItemComponent } from './left-menu-item/left-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ComplexSearchPhysicalPersonComponent } from './complex-search/complex-s
     SimpleSearchAccountNumberComponent,
     SimpleSearchCompanyComponent,
     ComplexSearchCompanyComponent,
-    ComplexSearchPhysicalPersonComponent
+    ComplexSearchPhysicalPersonComponent,
+    LeftMenuItemComponent
   ],
   imports: [
     BrowserModule,

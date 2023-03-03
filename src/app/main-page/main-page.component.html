@@ -7,7 +7,7 @@
 
         <div class="row w-100">
             <app-main-page-item
-                *ngFor="let item of menuService.getSimpleItems()"
+                *ngFor="let item of menuService.get('Wyszukiwanie proste')"
                 [title]="item.title"
                 [content]="item.content"
                 class="col-12 col-md-4 mb-4">
@@ -19,7 +19,7 @@
         <p class="p-title mt-3 mb-4">Wyszukiwanie złożone</p>
         <div class="row w-100">
             <app-main-page-item
-                *ngFor="let item of menuService.getComplexItems()"
+                *ngFor="let item of menuService.get('Wyszukiwanie złożone')"
                 [title]="item.title"
                 [content]="item.content"
                 class="col-12 col-md-4 mb-4">

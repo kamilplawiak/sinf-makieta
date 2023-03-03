@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from '../menu.service';
 
@@ -7,25 +7,30 @@ import { MenuService } from '../menu.service';
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.scss']
 })
-export class LeftMenuComponent {
-  activeElement = '';
+export class LeftMenuComponent implements OnInit {
+  @ViewChildren('menuItem') menuItems!: QueryList<ElementRef>;
+  activeElement = 'home';
   activeLink = '';
+  iconFiles = new Map();
 
   constructor(public menuService: MenuService) {}
 
-  onMenuLinkClick(name: string) {
-    if(this.activeElement !== name) this.activeLink = '';
-    this.activeElement = name;
+  ngOnInit(): void {
+    this.iconFiles.set('Strona główna', 'home-icon.svg');
+    this.iconFiles.set('Wyszukiwanie proste', 'search-icon.svg');
+    this.iconFiles.set('Wyszukiwanie złożone', 'search-icon.svg');
+    this.iconFiles.set('Wyszukiwarka', 'search-icon.svg');
+
+    this.menuService.setUsername('Admin');
+  }
+
+  onMenuLinkClick(index: number) {
+    // console.log(this.menuItems.get(index)?.setStatus(false));
+    // this.menuItems.get(index)!.nativeElement.isActive = true;
   }
 
   onLinkClick(name: string, event: Event) {
     event.stopPropagation();
     this.activeLink = name;
-  }
-
-  dashedNotation(str: string) : string {
-    const arr = str.split(" ");
-    arr.forEach((word, index) => arr[index] = word.toLowerCase());
-    return arr.join("-");
   }
 }
