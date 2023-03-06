@@ -5,7 +5,7 @@
                 *ngFor="let item of menuService.getUserItems().get(menuService.getUsername()); index as i"
                 [title]="item"
                 [hasList]="item !== 'Strona główna'"
-                [iconFile]="iconFiles.get(item)"
+                [iconName]="iconNames.get(item)"
                 #menuItem
                 [itemIndex]="i"
                 (click)="menuService.setActiveIndex(i)">

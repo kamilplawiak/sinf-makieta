@@ -24,6 +24,7 @@ export class MenuService {
 
     #userItems = new Map();
     #username = '';
+    #previousIndex = 0;
     #activeIndex = new Subject<number>();
 
     constructor() {
@@ -113,6 +114,11 @@ export class MenuService {
     }
 
     public setActiveIndex(index: number) {
+        this.#activeIndex.subscribe((val) => this.#previousIndex = val);
         this.#activeIndex.next(index);
+    }
+
+    public getPreviousIndex() : number {
+        return this.#previousIndex;
     }
 }

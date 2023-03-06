@@ -11,26 +11,20 @@ export class LeftMenuComponent implements OnInit {
   @ViewChildren('menuItem') menuItems!: QueryList<ElementRef>;
   activeElement = 'home';
   activeLink = '';
-  iconFiles = new Map();
+  iconNames = new Map();
 
   constructor(public menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.iconFiles.set('Strona główna', 'home-icon.svg');
-    this.iconFiles.set('Wyszukiwanie proste', 'search-icon.svg');
-    this.iconFiles.set('Wyszukiwanie złożone', 'search-icon.svg');
-    this.iconFiles.set('Wyszukiwarka', 'search-icon.svg');
+    this.iconNames.set('Strona główna', 'home');
+    this.iconNames.set('Wyszukiwanie proste', 'search');
+    this.iconNames.set('Wyszukiwanie złożone', 'search');
+    this.iconNames.set('Wyszukiwarka', 'search');
 
     this.menuService.setUsername('Test');
   }
 
-  onMenuLinkClick(index: number) {
-    // console.log(this.menuItems.get(index)?.setStatus(false));
-    // this.menuItems.get(index)!.nativeElement.isActive = true;
-  }
-
   onLinkClick(name: string, event: Event) {
-    event.stopPropagation();
     this.activeLink = name;
   }
 }

@@ -11,12 +11,17 @@ import { MenuService } from '../menu.service';
 export class LeftMenuItemComponent implements AfterContentInit {
   @Input() isActive = false;
   @Input() hasList = true;
-  @Input() iconFile = '';
+  @Input() iconName = '';
   @Input() title = '';
   @Input() itemIndex = 0;
-  isComplex = false;
+  linkCategory = '';
   activeLink = '';
   activeIndex = this.menuService.getActiveIndex().subscribe((val) => {
+    if(this.menuService.getPreviousIndex() === val && this.menuService.getPreviousIndex() === this.itemIndex) {
+      this.isActive = !this.isActive;
+      return;
+    }
+
     if(this.itemIndex === val) this.isActive = true;
     else {
       this.isActive = false;
@@ -27,10 +32,11 @@ export class LeftMenuItemComponent implements AfterContentInit {
   constructor(public menuService: MenuService, private router: Router) {}
 
   ngAfterContentInit(): void {
-    this.isComplex = (this.title === 'Wyszukiwanie złożone');
+    
   }
 
   onLinkClick(str: string, event: Event) {
+    event.stopPropagation();
     this.activeLink = str;
   }
 

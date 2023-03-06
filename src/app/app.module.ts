@@ -13,6 +13,7 @@ import { SimpleSearchCompanyComponent } from './simple-search/simple-search-comp
 import { ComplexSearchCompanyComponent } from './complex-search/complex-search-company/complex-search-company.component';
 import { ComplexSearchPhysicalPersonComponent } from './complex-search/complex-search-physical-person/complex-search-physical-person.component';
 import { LeftMenuItemComponent } from './left-menu-item/left-menu-item.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LeftMenuItemComponent } from './left-menu-item/left-menu-item.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

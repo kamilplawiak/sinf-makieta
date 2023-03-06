@@ -11,8 +11,8 @@
     transition: box-shadow 0.25s ease, margin 0.25s ease;
     background-color: $bg-highlight-color;
 
-    img {
-        filter: brightness(0) saturate(100%) invert(21%) sepia(79%) saturate(2128%) hue-rotate(195deg) brightness(92%) contrast(105%);
+    mat-icon {
+        color: $link-color;
     }
 
     .menu-link {
@@ -58,25 +58,16 @@
             li {
                 border-bottom: 1px solid rgba($light-border-color, 0.5);
                 border-left: 4px solid $link-color !important;
+
+                &.active {
+                    background-color: $bg-highlight-color;
+                }
             }
         }
 
-        a {
-            p.menu-link::before {
-                @include icon-indicator($content: url('assets/left-menu/small-right-arrow.svg'), $left: 2rem);
-                filter: brightness(0) saturate(100%) invert(0%) sepia(64%) saturate(4474%) hue-rotate(6deg) brightness(83%) contrast(108%);
-            }
-
-            &.active {    
-                & > p.menu-link {
-                    @include bold-text($color: $link-color);
-                    background-color: $bg-highlight-color;
-                }
-
-                & > p.menu-link::before {
-                    filter: none;
-                }
-            }
+        a.active {
+            @include bold-text($color: $link-color);
+            background-color: $bg-highlight-color;
         }
     }
 

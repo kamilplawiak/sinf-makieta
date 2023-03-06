@@ -2,21 +2,32 @@
     <li class="w-100 d-flex justify-content-start align-items-center flex-wrap search"
         [ngClass]="{ 'active': isActive, 'noList': !hasList }"
         (click)="navigate()">
-        <img
-            [src]="'../../assets/left-menu/' + iconFile"
-            [alt]="iconFile.split('.')[0]"
+        <mat-icon
+            [fontIcon]="iconName"
             class="ms-2 me-3">
+        </mat-icon>
+        <!-- <img
+            [src]="'../../assets/left-menu/' + iconName"
+            [alt]="iconName"
+            class="ms-2 me-3"> -->
         <a>
             <span class="menu-link">{{ title }}</span>
         </a>
 
         <ul *ngIf="hasList && isActive" class="d-flex flex-column">
-            <li *ngFor="let item of menuService.get(title)">
+            <li
+                *ngFor="let item of menuService.get(title)"
+                class="d-flex">
                 <a
-                    [routerLink]="'search/' + menuService.getLinkCategory(this.title) + '/' + menuService.dashedNotation(item.title)"
                     (click)="onLinkClick(menuService.dashedNotation(item.title), $event)"
-                    [ngClass]="{ 'active': activeLink === menuService.dashedNotation(item.title) }">
-                    <p class="menu-link m-0 ps-5">
+                    [routerLink]="'search/' + menuService.getLinkCategory(this.title) + '/' + menuService.dashedNotation(item.title)"
+                    [ngClass]="{ 'active': activeLink === menuService.dashedNotation(item.title) }"
+                    class="d-flex justify-content-start align-items-center ps-4 w-100 h-100">
+                    <mat-icon
+                        fontIcon="arrow_right"
+                        style="transform: scaleY(0.75);">
+                    </mat-icon>
+                    <p class="menu-link m-0">
                         {{ item.title }}
                     </p>
                 </a>
