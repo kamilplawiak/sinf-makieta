@@ -26,6 +26,7 @@ export class MenuService {
     #username = '';
     #previousIndex = 0;
     #activeIndex = new Subject<number>();
+    #menuStatus = true;
 
     constructor() {
         this.#userItems.set('Test', [
@@ -97,6 +98,10 @@ export class MenuService {
         return result;
     }
 
+    public menuToggle() {
+        this.#menuStatus = !this.#menuStatus;
+    }
+
     public getUserItems() {
         return this.#userItems;
     }
@@ -120,5 +125,9 @@ export class MenuService {
 
     public getPreviousIndex() : number {
         return this.#previousIndex;
+    }
+
+    public getMenuStatus() : boolean {
+        return this.#menuStatus;
     }
 }

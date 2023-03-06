@@ -1,7 +1,9 @@
 <div class="wrapper py-1 d-flex align-items-center">
     <div class="menu-button-wrapper h-100 d-flex justify-content-start align-items-center ms-4 py-2">
-        <div class="img-wrapper d-flex justify-content-center align-items-center">
-            <img src="../../assets/left-menu/hamburger-icon.png" alt="Hamburger icon">
+        <div
+            class="img-wrapper d-flex justify-content-center align-items-center"
+            (click)="menuService.menuToggle()">
+            <mat-icon [fontIcon]="'menu'"></mat-icon>
         </div>
         <a href="#" class="ms-2 bold-link">Menu</a>
     </div>

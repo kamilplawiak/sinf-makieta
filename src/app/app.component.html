@@ -1,6 +1,6 @@
 <div class="w-100 h-100">
     <app-header></app-header>
-    <div class="content-wrapper w-100 d-inline-flex">
+    <div class="content-wrapper w-100 d-inline-flex" [ngClass]="{ 'menuHidden': !menuService.getMenuStatus()}">
       <app-left-menu class="component"></app-left-menu>
       <div class="component">
         <router-outlet></router-outlet>
