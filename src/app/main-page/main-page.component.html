@@ -7,10 +7,12 @@
 
         <div class="row w-100">
             <app-main-page-item
-                *ngFor="let item of menuService.get('Wyszukiwanie proste')"
+                *ngFor="let item of menuService.get('Wyszukiwanie proste'); index as i"
                 category="simple"
                 [title]="item.title"
                 [content]="item.content"
+                [menuIndex]="1"
+                [linkIndex]="i"
                 class="col-12 col-md-4 mb-4">
             </app-main-page-item>
         </div>

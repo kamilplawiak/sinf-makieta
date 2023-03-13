@@ -6,22 +6,19 @@
             [fontIcon]="iconName"
             class="ms-2 me-3">
         </mat-icon>
-        <!-- <img
-            [src]="'../../assets/left-menu/' + iconName"
-            [alt]="iconName"
-            class="ms-2 me-3"> -->
+
         <a>
             <span class="menu-link">{{ title }}</span>
         </a>
 
         <ul *ngIf="hasList && isActive" class="d-flex flex-column">
             <li
-                *ngFor="let item of menuService.get(title)"
+                *ngFor="let item of menuService.get(title); index as i"
                 class="d-flex">
                 <a
-                    (click)="onLinkClick(menuService.dashedNotation(item.title), $event)"
+                    (click)="onLinkClick(menuService.dashedNotation(item.title), $event, i)"
                     [routerLink]="'search/' + menuService.getLinkCategory(this.title) + '/' + menuService.dashedNotation(item.title)"
-                    [ngClass]="{ 'active': activeLink === menuService.dashedNotation(item.title) }"
+                    [ngClass]="{ 'active': i === menuService.getActiveLink() }"
                     class="d-flex justify-content-start align-items-center ps-4 w-100 h-100">
                     <mat-icon
                         fontIcon="arrow_right"

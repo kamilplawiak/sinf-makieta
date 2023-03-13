@@ -1,4 +1,6 @@
-<div class="wrapper p-3" [routerLink]="'search/' + category + '/' + menuService.dashedNotation(title)">
+<div
+    class="wrapper p-3"
+    (click)="navigateTo('search/' + category + '/' + menuService.dashedNotation(title))">
     <p class="title">{{ title }}</p>
 
     <p class="content">{{  content }}</p>

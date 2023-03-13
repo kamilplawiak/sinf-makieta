@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, map, Subject } from 'rxjs';
 import { MenuService } from '../menu.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MenuService } from '../menu.service';
   styleUrls: ['./left-menu-item.component.scss']
 })
 export class LeftMenuItemComponent implements AfterContentInit {
-  @Input() isActive = false;
+  isActive = false;
   @Input() hasList = true;
   @Input() iconName = '';
   @Input() title = '';
@@ -35,13 +35,17 @@ export class LeftMenuItemComponent implements AfterContentInit {
     
   }
 
-  onLinkClick(str: string, event: Event) {
+  onLinkClick(str: string, event: Event, index: number) {
     event.stopPropagation();
     this.activeLink = str;
+    this.menuService.setActiveLink(index);
   }
 
   navigate() {
     if(!this.hasList) this.router.navigate(['']);
+    this.menuService.getActiveIndex().subscribe((val) => {
+      if(val !== this.menuService.getPreviousIndex()) this.menuService.setActiveLink(-1);
+    })
   }
 }
 

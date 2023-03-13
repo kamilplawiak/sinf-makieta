@@ -10,7 +10,6 @@ import { MenuService } from '../menu.service';
 export class LeftMenuComponent implements OnInit {
   @ViewChildren('menuItem') menuItems!: QueryList<ElementRef>;
   activeElement = 'home';
-  activeLink = '';
   iconNames = new Map();
 
   constructor(public menuService: MenuService) {}
@@ -24,7 +23,7 @@ export class LeftMenuComponent implements OnInit {
     this.menuService.setUsername('Test');
   }
 
-  onLinkClick(name: string, event: Event) {
-    this.activeLink = name;
-  }
+  // onLinkClick(name: string, event: Event) {
+  //   this.activeLink = name;
+  // }
 }

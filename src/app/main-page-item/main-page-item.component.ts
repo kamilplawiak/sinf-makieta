@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuService } from '../menu.service';
 
 @Component({
@@ -10,6 +11,14 @@ export class MainPageItemComponent {
   @Input() title = "";
   @Input() content = "";
   @Input() category = "";
+  @Input() menuIndex!: number;
+  @Input() linkIndex!: number;
 
-  constructor(public menuService: MenuService) {}
+  constructor(public menuService: MenuService, private router: Router) {}
+
+  navigateTo(link: string) {
+    this.menuService.setActiveIndex(this.menuIndex);
+    this.menuService.setActiveLink(this.linkIndex);
+    this.router.navigate([link]);
+  }
 }

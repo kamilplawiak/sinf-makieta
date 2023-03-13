@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 
 @Injectable({
@@ -24,9 +25,10 @@ export class MenuService {
 
     #userItems = new Map();
     #username = '';
-    #previousIndex = 0;
+    #previousIndex!: number;
     #activeIndex = new Subject<number>();
     #menuStatus = true;
+    #activeLink!: number;
 
     constructor() {
         this.#userItems.set('Test', [
@@ -41,8 +43,6 @@ export class MenuService {
             'Wyszukiwanie złożone',
             'Wyszukiwarka'
           ]);
-
-          console.log(this.#userItems.get('Test'))
     }
 
     public get(name: string) {
@@ -113,7 +113,15 @@ export class MenuService {
     public getActiveIndex() { 
         return this.#activeIndex;
     }
+
+    public getActiveLink() {
+        return this.#activeLink;
+    }
     
+    public setActiveLink(link: number) {
+        this.#activeLink = link;
+    }
+
     public setUsername(name: string) {
         this.#username = name;
     }
