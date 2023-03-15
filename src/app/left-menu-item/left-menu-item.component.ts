@@ -15,11 +15,6 @@ export class LeftMenuItemComponent implements AfterContentInit {
   @Input() title = '';
   @Input() itemIndex = 0;
   activeIndex = this.menuService.getActiveIndex().subscribe((val) => {
-    if(this.menuService.getPreviousIndex() === val && this.menuService.getPreviousIndex() === this.itemIndex) {
-      this.isActive = true;
-      return;
-    }
-
     if(this.itemIndex === val) this.isActive = true;
     else this.isActive = false;
   });

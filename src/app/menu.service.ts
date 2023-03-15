@@ -25,7 +25,6 @@ export class MenuService {
 
     #userItems = new Map();
     #username = '';
-    #previousIndex!: number;
     #activeIndex = new Subject<number>();
     #menuStatus = true;
     #activeLink!: number;
@@ -122,10 +121,6 @@ export class MenuService {
         return this.#activeLink;
     }
 
-    public getPreviousIndex() : number {
-        return this.#previousIndex;
-    }
-
     public getMenuStatus() : boolean {
         return this.#menuStatus;
     }
@@ -148,7 +143,6 @@ export class MenuService {
     }
 
     public setActiveIndex(index: number) {
-        this.#activeIndex.subscribe((val) => this.#previousIndex = val);
         this.#activeIndex.next(index);
     }
 }
