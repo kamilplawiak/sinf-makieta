@@ -27,11 +27,24 @@
 }
 
 @media only screen and (max-width: 767px) {
-    .component:nth-child(1) {
-        width: 100% !important;
-    }
+    .content-wrapper {
+        .component:nth-child(1) {
+            width: 100%;
+        }
+    
+        .component:nth-child(2) {
+            display: none;
+        }
 
-    .component:nth-child(2) {
-        display: none;
+        &.menuHidden {
+            .component:nth-child(1) {
+                display: none !important;
+            }
+    
+            .component:nth-child(2) {
+                display: block !important;
+                width: 100% !important;
+            }
+        }
     }
 }
