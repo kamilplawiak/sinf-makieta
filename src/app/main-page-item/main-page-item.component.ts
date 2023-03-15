@@ -18,7 +18,8 @@ export class MainPageItemComponent {
 
   navigateTo(link: string) {
     this.menuService.setActiveIndex(this.menuIndex);
-    this.menuService.setActiveLink(this.linkIndex);
+    // this.menuService.setActiveLink(this.linkIndex);
+    this.menuService.setLastNavigatedLink(this.menuIndex, this.linkIndex);
     this.router.navigate([link]);
   }
 }

@@ -22,10 +22,12 @@
         <p class="p-title mt-3 mb-4">Wyszukiwanie złożone</p>
         <div class="row w-100">
             <app-main-page-item
-                *ngFor="let item of menuService.get('Wyszukiwanie złożone')"
+                *ngFor="let item of menuService.get('Wyszukiwanie złożone'); index as i"
                 category="complex"
                 [title]="item.title"
                 [content]="item.content"
+                [menuIndex]="2"
+                [linkIndex]="i"
                 class="col-12 col-md-4 mb-4">
             </app-main-page-item>
         </div>

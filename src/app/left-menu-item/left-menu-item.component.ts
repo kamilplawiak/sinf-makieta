@@ -14,19 +14,14 @@ export class LeftMenuItemComponent implements AfterContentInit {
   @Input() iconName = '';
   @Input() title = '';
   @Input() itemIndex = 0;
-  linkCategory = '';
-  activeLink = '';
   activeIndex = this.menuService.getActiveIndex().subscribe((val) => {
     if(this.menuService.getPreviousIndex() === val && this.menuService.getPreviousIndex() === this.itemIndex) {
-      this.isActive = !this.isActive;
+      this.isActive = true;
       return;
     }
 
     if(this.itemIndex === val) this.isActive = true;
-    else {
-      this.isActive = false;
-      this.activeLink = '';
-    }
+    else this.isActive = false;
   });
 
   constructor(public menuService: MenuService, private router: Router) {}
@@ -35,17 +30,11 @@ export class LeftMenuItemComponent implements AfterContentInit {
     
   }
 
-  onLinkClick(str: string, event: Event, index: number) {
-    event.stopPropagation();
-    this.activeLink = str;
-    this.menuService.setActiveLink(index);
-  }
-
   navigate() {
-    if(!this.hasList) this.router.navigate(['']);
-    this.menuService.getActiveIndex().subscribe((val) => {
-      if(val !== this.menuService.getPreviousIndex()) this.menuService.setActiveLink(-1);
-    })
+    if(!this.hasList) {
+      this.router.navigate(['']);
+      this.menuService.setLastNavigatedLink(0, -1); 
+    }
   }
 }
 

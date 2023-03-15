@@ -22,8 +22,4 @@ export class LeftMenuComponent implements OnInit {
 
     this.menuService.setUsername('Test');
   }
-
-  // onLinkClick(name: string, event: Event) {
-  //   this.activeLink = name;
-  // }
 }

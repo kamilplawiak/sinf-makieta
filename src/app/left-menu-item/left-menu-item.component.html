@@ -16,9 +16,10 @@
                 *ngFor="let item of menuService.get(title); index as i"
                 class="d-flex">
                 <a
-                    (click)="onLinkClick(menuService.dashedNotation(item.title), $event, i)"
+                    (click)="menuService.setLastNavigatedLink(itemIndex, i)"
                     [routerLink]="'search/' + menuService.getLinkCategory(this.title) + '/' + menuService.dashedNotation(item.title)"
-                    [ngClass]="{ 'active': i === menuService.getActiveLink() }"
+                    [ngClass]="{ 'active': i === menuService.getLastNavigatedLink().linkIndex &&
+                                           itemIndex === menuService.getLastNavigatedLink().menuItemIndex }"
                     class="d-flex justify-content-start align-items-center ps-4 w-100 h-100">
                     <mat-icon
                         fontIcon="arrow_right"

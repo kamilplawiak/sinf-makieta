@@ -29,6 +29,10 @@ export class MenuService {
     #activeIndex = new Subject<number>();
     #menuStatus = true;
     #activeLink!: number;
+    #lastNavigatedLink = {
+        menuItemIndex: -1,
+        linkIndex: -1 
+    };
 
     constructor() {
         this.#userItems.set('Test', [
@@ -117,6 +121,23 @@ export class MenuService {
     public getActiveLink() {
         return this.#activeLink;
     }
+
+    public getPreviousIndex() : number {
+        return this.#previousIndex;
+    }
+
+    public getMenuStatus() : boolean {
+        return this.#menuStatus;
+    }
+    
+    public getLastNavigatedLink() {
+        return this.#lastNavigatedLink;
+    }
+
+    public setLastNavigatedLink(menuItemIndex: number, linkIndex: number) {
+        this.#lastNavigatedLink.menuItemIndex = menuItemIndex;
+        this.#lastNavigatedLink.linkIndex = linkIndex;
+    }
     
     public setActiveLink(link: number) {
         this.#activeLink = link;
@@ -129,13 +150,5 @@ export class MenuService {
     public setActiveIndex(index: number) {
         this.#activeIndex.subscribe((val) => this.#previousIndex = val);
         this.#activeIndex.next(index);
-    }
-
-    public getPreviousIndex() : number {
-        return this.#previousIndex;
-    }
-
-    public getMenuStatus() : boolean {
-        return this.#menuStatus;
     }
 }
