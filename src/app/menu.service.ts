@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
+import { NavigationModel } from "./navigation.model";
 
 @Injectable({
     providedIn: 'root'
@@ -32,73 +33,91 @@ export class MenuService {
         menuItemIndex: -1,
         linkIndex: -1 
     };
+    #navigationModel: NavigationModel[] = [];
 
     constructor() {
-        this.#userItems.set('Test', [
+        this.#navigationModel.push(new NavigationModel(
+            'homepage',
             'Strona główna',
+            [
+                {
+                    url: '/',
+                    name: 'Strona główna',
+                    desc: 'Strona główna',
+                    users: ['Test', 'Admin']
+                }
+            ]
+        ));
+
+        this.#navigationModel.push(new NavigationModel(
+            'simple-items',
             'Wyszukiwanie proste',
-            'Wyszukiwanie złożone'
-          ]);
-      
-          this.#userItems.set('Admin', [
-            'Strona główna',
-            'Wyszukiwanie proste',
+            [
+                {
+                    url: 'search/simple/podmiot',
+                    name: 'Podmiot',
+                    desc: 'Wyszukaj dane finansowe po NIP.',
+                    users: ['Test', 'Admin']
+                },
+                {
+                    url: 'search/simple/osoba-fizyczna',
+                    name: 'Osoba fizyczna',
+                    desc: 'Wyszukaj dane finansowe po PESEL.',
+                    users: ['Test', 'Admin']
+                },
+                {
+                    url: 'search/simple/rachunek',
+                    name: 'Rachunek',
+                    desc: 'Wyszukaj dane finansowe po numerze rachunku.',
+                    users: ['Test', 'Admin']
+                },
+            ]
+        ));
+
+        this.#navigationModel.push(new NavigationModel(
+            'complex-items',
             'Wyszukiwanie złożone',
-            'Wyszukiwarka'
-          ]);
+            [
+                {
+                    url: 'search/complex/podmiot',
+                    name: 'Podmiot',
+                    desc: 'Wyszukaj dane finansowe, jeżeli nie posiadasz NIP.',
+                    users: ['Test', 'Admin']
+                },
+                {
+                    url: 'search/complex/osoba-fizyczna',
+                    name: 'Osoba fizyczna',
+                    desc: 'Wyszukaj dane finansowe, jeżeli nie posiadasz PESEL.',
+                    users: ['Test', 'Admin']
+                }
+            ]
+        ));
+
+        this.#navigationModel.push(new NavigationModel(
+            'search',
+            'Wyszukiwarka',
+            [
+                {
+                    url: 'search/simple/podmiot',
+                    name: 'Podmiot',
+                    desc: 'Wyszukaj dane finansowe dla admina.',
+                    users: ['Admin']
+                },
+            ]
+        ))
     }
 
     public get(name: string) {
-        let result: { title: string, content: string }[] = [];
-        
-        switch(name) {
-            case 'Wyszukiwanie proste':
-                result = this.#simpleItems;
-                break;
-            
-            case 'Wyszukiwanie złożone':
-                result = this.#complexItems;
-                break;
+        return this.#navigationModel
+                    .find((el) => el.getType() === name)
+                    ?.getUserItems(this.#username);
 
-            case 'Wyszukiwarka':
-                result = this.#searchItems;
-                break;
-            
-            default:
-                break;
-        }
-
-        return result;
     }
 
-    public dashedNotation(str: string) : string {
-        if(str.length === 0) return "";
-        const arr = str.split(" ");
-        arr.forEach((word, index) => arr[index] = word.toLowerCase());
-        return arr.join("-");
-    }
-
-    public getLinkCategory(name: string) : string {
-        let result = '';
-
-        switch(name) {
-            case 'Wyszukiwanie złożone':
-              result = 'complex';
-              break;
-      
-            case 'Wyszukiwanie proste':
-                result = 'simple';
-              break;
-      
-            case 'Wyszukiwarka':
-                result = 'test';
-              break;
-      
-            default:
-              break;
-        };
-
-        return result;
+    public getAll() {
+        return this.#navigationModel
+                    .filter((el) => el.getUserItems(this.#username).length > 0)
+                    .map((el) => el.getType())
     }
 
     public menuToggle() {

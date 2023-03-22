@@ -10,6 +10,7 @@ import { MenuService } from '../menu.service';
 export class MainPageItemComponent {
   @Input() title = "";
   @Input() content = "";
+  @Input() url = "";
   @Input() category = "";
   @Input() menuIndex!: number;
   @Input() linkIndex!: number;

@@ -2,7 +2,7 @@
     <div class="link-list-wrapper h-100">
         <ul class="h-100">
             <app-left-menu-item
-                *ngFor="let item of menuService.getUserItems().get(menuService.getUsername()); index as i"
+                *ngFor="let item of menuService.getAll(); index as i"
                 [title]="item"
                 [hasList]="item !== 'Strona główna'"
                 [iconName]="iconNames.get(item)"

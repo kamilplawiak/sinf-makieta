@@ -9,8 +9,9 @@
             <app-main-page-item
                 *ngFor="let item of menuService.get('Wyszukiwanie proste'); index as i"
                 category="simple"
-                [title]="item.title"
-                [content]="item.content"
+                [title]="item.name"
+                [content]="item.desc"
+                [url]="item.url"
                 [menuIndex]="1"
                 [linkIndex]="i"
                 class="col-12 col-md-4 mb-4">
@@ -24,8 +25,9 @@
             <app-main-page-item
                 *ngFor="let item of menuService.get('Wyszukiwanie złożone'); index as i"
                 category="complex"
-                [title]="item.title"
-                [content]="item.content"
+                [title]="item.name"
+                [content]="item.desc"
+                [url]="item.url"
                 [menuIndex]="2"
                 [linkIndex]="i"
                 class="col-12 col-md-4 mb-4">

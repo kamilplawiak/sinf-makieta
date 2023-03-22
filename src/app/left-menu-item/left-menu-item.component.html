@@ -17,7 +17,7 @@
                 class="d-flex">
                 <a
                     (click)="menuService.setLastNavigatedLink(itemIndex, i)"
-                    [routerLink]="'search/' + menuService.getLinkCategory(this.title) + '/' + menuService.dashedNotation(item.title)"
+                    [routerLink]="item.url"
                     [ngClass]="{ 'active': i === menuService.getLastNavigatedLink().linkIndex &&
                                            itemIndex === menuService.getLastNavigatedLink().menuItemIndex }"
                     class="d-flex justify-content-start align-items-center ps-4 w-100 h-100">
@@ -26,7 +26,7 @@
                         style="transform: scaleY(0.75);">
                     </mat-icon>
                     <p class="menu-link m-0">
-                        {{ item.title }}
+                        {{ item.name }}
                     </p>
                 </a>
             </li>
